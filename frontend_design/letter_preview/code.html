@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#620e12",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211112",
+                    },
+                    fontFamily: {
+                        "display": ["Cormorant Garamond", "serif"],
+                        "serif": ["Playfair Display", "serif"],
+                        "body": ["Noto Serif", "serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .letter-texture {
+            background-image: radial-gradient(#e5e7eb 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .gold-border {
+            border: 12px solid transparent;
+            border-image: linear-gradient(to bottom right, #b8860b, #ffd700, #b8860b) 1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col items-center justify-center p-4 md:p-10 font-body">
+<!-- Top Navigation (Minimalist) -->
+<div class="fixed top-0 left-0 w-full px-6 py-4 flex justify-between items-center z-50">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-display text-lg font-bold">Love Letter</span>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center justify-center rounded-full w-10 h-10 bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="flex items-center justify-center rounded-full w-10 h-10 bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</div>
+<!-- Letter Container -->
+<main class="relative w-full max-w-3xl aspect-[1/1.414] bg-[#fffcf5] shadow-2xl rounded-sm overflow-hidden flex flex-col border-[1px] border-primary/10 group">
+<!-- Decorative Border Overlay -->
+<div class="absolute inset-0 border-[24px] border-double border-primary/5 pointer-events-none"></div>
+<div class="absolute inset-4 border-[1px] border-primary/20 pointer-events-none"></div>
+<!-- Floral Corners (Simulated with Icons/Styles) -->
+<div class="absolute top-6 left-6 text-primary/30">
+<span class="material-symbols-outlined text-4xl">local_florist</span>
+</div>
+<div class="absolute top-6 right-6 text-primary/30 scale-x-[-1]">
+<span class="material-symbols-outlined text-4xl">local_florist</span>
+</div>
+<div class="absolute bottom-6 left-6 text-primary/30 scale-y-[-1]">
+<span class="material-symbols-outlined text-4xl">local_florist</span>
+</div>
+<div class="absolute bottom-6 right-6 text-primary/30 scale-x-[-1] scale-y-[-1]">
+<span class="material-symbols-outlined text-4xl">local_florist</span>
+</div>
+<!-- Content Area -->
+<div class="flex-1 px-12 md:px-24 py-20 flex flex-col overflow-y-auto">
+<!-- Header/Date -->
+<div class="text-right mb-12">
+<p class="font-display italic text-primary/80 text-xl">The Fourteenth of February, 2024</p>
+</div>
+<!-- Salutation -->
+<div class="mb-8">
+<h1 class="font-serif text-4xl md:text-5xl text-primary mb-2">To My Dearest,</h1>
+</div>
+<!-- Body Text -->
+<div class="flex-1">
+<p class="font-display text-xl md:text-2xl leading-relaxed text-slate-800 first-letter:text-6xl first-letter:font-serif first-letter:mr-3 first-letter:float-left first-letter:text-primary">
+                    Every moment spent with you feels like a beautiful dream from which I never wish to wake. You are my light, my love, and my home. I find myself lost in the thought of your smile, and the way the world seems to settle into place whenever you are near.
+                </p>
+<p class="font-display text-xl md:text-2xl leading-relaxed text-slate-800 mt-6">
+                    In the quiet moments of the day, my heart overflows with words I can only hope this letter carries. It isn't just the grand gestures, but the small, shared glances and the comfort of your presence that make my life complete. 
+                </p>
+<p class="font-display text-xl md:text-2xl leading-relaxed text-slate-800 mt-6">
+                    Thank you for being the person you are, for loving me as you do, and for building a future with me one day at a time.
+                </p>
+</div>
+<!-- Closing & Signature -->
+<div class="mt-12 mb-8">
+<p class="font-display italic text-xl text-primary/80 mb-4">With all my love, Always,</p>
+<div class="h-20 flex items-center">
+<span class="font-serif text-5xl text-primary opacity-90 italic">Julian</span>
+</div>
+</div>
+</div>
+<!-- Decorative Center Image -->
+<div class="absolute bottom-16 right-16 w-32 h-32 opacity-10 pointer-events-none">
+<div class="w-full h-full bg-center bg-no-repeat bg-contain" data-alt="Faint vintage rose illustration" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB-7Qe5mA7WOaLwar7raHD4IwpU3kdI4ki4P2DkFVnczQjAOgDtXl1SVTusUgwRycJjTSdinpUwjCZ0bygbcIYBWPoIX2X0dw_4xIWVpDtzVVzIog9jmHFr8Ft1Ll3CpfjqUJFoH_aiKe3CNPFoFC9Zp2Psb3F-lYG99YCSWHERJ-o6h5CgZOJ9H7I2_XvmKdD2p1inH9hnd_6jnU5TNYr8p7pAUrL2OiwwQPFK8X9Vu1MMG0-fekQ49JIqSK-W189Zv2q-85CSFE8j");'></div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-10 mb-6 flex flex-col items-center gap-2">
+<div class="flex items-center gap-1 text-primary/60 font-display italic text-lg">
+<span>Made with love</span>
+<span class="material-symbols-outlined text-sm fill-1">favorite</span>
+</div>
+<div class="flex gap-6 mt-4">
+<a class="text-xs uppercase tracking-widest text-primary/40 hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="text-xs uppercase tracking-widest text-primary/40 hover:text-primary transition-colors" href="#">Terms</a>
+<a class="text-xs uppercase tracking-widest text-primary/40 hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</footer>
+<!-- Background Subtle Patterns -->
+<div class="fixed inset-0 -z-10 opacity-20 pointer-events-none overflow-hidden">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-3xl"></div>
+</div>
+</body></html>

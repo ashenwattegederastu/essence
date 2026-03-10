@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter Ready | Essence</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="theme-share">
+    <main class="share-page">
+        <header class="share-topbar">
+            <p>Success</p>
+            <a th:href="@{/}" aria-label="Close">x</a>
+        </header>
+        <section class="share-panel">
+            <div class="seal-image" aria-hidden="true"></div>
+            <h1>Your letter is ready.</h1>
+            <p>Your words have been preserved. You can now share this digital keepsake.</p>
+
+            <div class="share-link-box">
+                <label for="shareLink">Shareable Link</label>
+                <div class="share-link-row">
+                    <input id="shareLink" type="text" readonly
+                           th:value="${#httpServletRequest.scheme + '://' + #httpServletRequest.serverName + (#httpServletRequest.serverPort != 80 ? ':' + #httpServletRequest.serverPort : '') + '/letter/' + letter.slug}">
+                    <button id="copyLinkBtn" type="button" class="btn btn-primary">Copy Link</button>
+                </div>
+            </div>
+
+            <div class="share-actions">
+                <a th:href="@{'/letter/' + ${letter.slug}}" class="btn btn-outline">Preview Letter</a>
+                <a th:href="@{/create}" class="btn btn-outline">Create Another</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        (function () {
+            const btn = document.getElementById('copyLinkBtn');
+            const link = document.getElementById('shareLink');
+
+            btn.addEventListener('click', function () {
+                navigator.clipboard.writeText(link.value).then(function () {
+                    const original = btn.textContent;
+                    btn.textContent = 'Copied';
+                    setTimeout(function () {
+                        btn.textContent = original;
+                    }, 1600);
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

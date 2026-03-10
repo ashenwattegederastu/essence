@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${letter.title} + ' | Essence'">Love Letter</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="theme-preview">
+    <header class="preview-topbar">
+        <a th:href="@{/}" class="brand">Love Letter</a>
+        <div class="preview-actions">
+            <a th:href="@{'/letter/' + ${letter.slug} + '/share'}" class="icon-btn" title="Share">Share</a>
+            <button class="icon-btn" id="copyFromPreview" type="button" title="Copy link">Copy</button>
+        </div>
+    </header>
+
+    <main class="preview-page">
+        <article class="letter-paper letter-frame" th:classappend="' letter-template-' + ${letter.templateKey}">
+            <p class="letter-date" th:text="${#temporals.format(letter.createdAt, 'MMMM dd, yyyy')}">Date</p>
+            <h1 class="letter-title" th:text="${letter.title}">To My Dearest</h1>
+            <p class="letter-recipient">Dear <span th:text="${letter.recipientName}">Beloved</span>,</p>
+
+            <div class="letter-content" th:text="${letter.content}">Letter content goes here...</div>
+
+            <p class="letter-signoff">With all my love,</p>
+            <p class="letter-signature" th:text="${letter.signature}">Signature</p>
+        </article>
+    </main>
+
+    <input type="hidden" id="shareLink"
+           th:value="${#httpServletRequest.scheme + '://' + #httpServletRequest.serverName + (#httpServletRequest.serverPort != 80 ? ':' + #httpServletRequest.serverPort : '') + '/letter/' + letter.slug}">
+
+    <script>
+        (function () {
+            const copyButton = document.getElementById('copyFromPreview');
+            const linkInput = document.getElementById('shareLink');
+
+            copyButton.addEventListener('click', function () {
+                navigator.clipboard.writeText(linkInput.value).then(function () {
+                    const original = copyButton.textContent;
+                    copyButton.textContent = 'Copied';
+                    setTimeout(function () {
+                        copyButton.textContent = original;
+                    }, 1500);
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

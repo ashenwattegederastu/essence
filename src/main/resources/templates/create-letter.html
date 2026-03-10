@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compose Letter | Essence</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="theme-editor">
+    <header class="editor-header">
+        <a th:href="@{/}" class="brand">Essence</a>
+        <nav>
+            <a th:href="@{/templates}">Templates</a>
+            <a th:href="@{/}">Home</a>
+        </nav>
+    </header>
+
+    <main class="editor-layout">
+        <section class="editor-pane">
+            <h1>Compose</h1>
+            <p>Pour your thoughts onto the page.</p>
+
+            <div th:if="${error}" class="alert alert-error">
+                <p th:text="${error}"></p>
+            </div>
+
+            <form th:action="@{/create}" th:object="${letterForm}" method="post" class="editor-form">
+                <label for="title">Letter Title</label>
+                <input id="title" th:field="*{title}" type="text" placeholder="Evening Thoughts" data-preview="title">
+                <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error-message"></span>
+
+                <label for="recipientName">To</label>
+                <input id="recipientName" th:field="*{recipientName}" type="text" placeholder="Recipient's Name" data-preview="recipient">
+                <span th:if="${#fields.hasErrors('recipientName')}" th:errors="*{recipientName}" class="error-message"></span>
+
+                <label for="content">Letter Content</label>
+                <textarea id="content" th:field="*{content}" rows="10" placeholder="Dearest..." data-preview="content"></textarea>
+                <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="error-message"></span>
+
+                <label for="signature">From</label>
+                <input id="signature" th:field="*{signature}" type="text" placeholder="Your Name" data-preview="signature">
+                <span th:if="${#fields.hasErrors('signature')}" th:errors="*{signature}" class="error-message"></span>
+
+                <label for="templateKey">Stationery Style</label>
+                <div class="template-picker">
+                    <label>
+                        <input type="radio" th:field="*{templateKey}" value="classic">
+                        <span>Classic Ivory</span>
+                    </label>
+                    <label>
+                        <input type="radio" th:field="*{templateKey}" value="rose">
+                        <span>Rose Garden</span>
+                    </label>
+                    <label>
+                        <input type="radio" th:field="*{templateKey}" value="midnight">
+                        <span>Midnight Ink</span>
+                    </label>
+                </div>
+                <span th:if="${#fields.hasErrors('templateKey')}" th:errors="*{templateKey}" class="error-message"></span>
+
+                <button type="submit" class="btn btn-primary">Create Letter</button>
+            </form>
+        </section>
+
+        <section class="preview-pane">
+            <article id="livePreview" class="preview-sheet letter-template-classic">
+                <p class="preview-date" th:text="${#temporals.format(#temporals.createNow(), 'MMMM dd, yyyy')}">Date</p>
+                <h2 id="previewTitle">A Letter from the Heart</h2>
+                <p class="preview-recipient">Dearest <span id="previewRecipient">Beloved</span>,</p>
+                <div id="previewContent" class="preview-content">Write your message on the left and see it appear here.</div>
+                <p class="preview-signoff">With love,</p>
+                <p id="previewSignature" class="preview-signature">Your Name</p>
+            </article>
+        </section>
+    </main>
+
+    <script>
+        (function () {
+            const title = document.getElementById('title');
+            const recipient = document.getElementById('recipientName');
+            const content = document.getElementById('content');
+            const signature = document.getElementById('signature');
+            const titleTarget = document.getElementById('previewTitle');
+            const recipientTarget = document.getElementById('previewRecipient');
+            const contentTarget = document.getElementById('previewContent');
+            const signatureTarget = document.getElementById('previewSignature');
+            const preview = document.getElementById('livePreview');
+
+            function syncPreview() {
+                titleTarget.textContent = title.value.trim() || 'A Letter from the Heart';
+                recipientTarget.textContent = recipient.value.trim() || 'Beloved';
+                contentTarget.textContent = content.value.trim() || 'Write your message on the left and see it appear here.';
+                signatureTarget.textContent = signature.value.trim() || 'Your Name';
+            }
+
+            function syncTemplate() {
+                const selected = document.querySelector('input[name="templateKey"]:checked');
+                const key = selected ? selected.value : 'classic';
+                preview.className = 'preview-sheet letter-template-' + key;
+            }
+
+            [title, recipient, content, signature].forEach((input) => {
+                input.addEventListener('input', syncPreview);
+            });
+
+            document.querySelectorAll('input[name="templateKey"]').forEach((radio) => {
+                radio.addEventListener('change', syncTemplate);
+            });
+
+            syncPreview();
+            syncTemplate();
+        })();
+    </script>
+</body>
+</html>

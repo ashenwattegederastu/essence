@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Gallery | Essence</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="theme-gallery">
+    <header class="site-header">
+        <a th:href="@{/}" class="brand">Essence</a>
+        <nav class="site-nav">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/create}">Write</a>
+        </nav>
+    </header>
+
+    <main class="gallery-page">
+        <section class="gallery-hero">
+            <h1>Choose Your Stationery</h1>
+            <p>Select the perfect canvas for your words. Every love story deserves a beautiful beginning.</p>
+        </section>
+
+        <section class="style-chips" aria-label="Style filters">
+            <button class="chip active" type="button">All Styles</button>
+            <button class="chip" type="button">Romantic</button>
+            <button class="chip" type="button">Classic</button>
+            <button class="chip" type="button">Minimalist</button>
+            <button class="chip" type="button">Vintage</button>
+            <button class="chip" type="button">Modern</button>
+        </section>
+
+        <section class="template-grid">
+            <article class="template-card card-classic">
+                <h2>Classic Ivory</h2>
+                <p>Timeless cream paper for heartfelt messages.</p>
+                <a th:href="@{/create(template='classic')}" class="btn btn-primary">Use Classic</a>
+            </article>
+
+            <article class="template-card card-rose">
+                <h2>Rose Garden</h2>
+                <p>Floral warmth and romantic accents for intimate notes.</p>
+                <a th:href="@{/create(template='rose')}" class="btn btn-primary">Use Rose</a>
+            </article>
+
+            <article class="template-card card-midnight">
+                <h2>Midnight Ink</h2>
+                <p>Dark paper mood with elegant gold-inspired highlights.</p>
+                <a th:href="@{/create(template='midnight')}" class="btn btn-light">Use Midnight</a>
+            </article>
+        </section>
+
+        <section class="curator-banner">
+            <div>
+                <h2>Can't decide?</h2>
+                <p>Let the curation helper suggest a stationery style for your message tone.</p>
+            </div>
+            <a th:href="@{/create}" class="btn btn-light">Start Writing</a>
+        </section>
+    </main>
+</body>
+</html>

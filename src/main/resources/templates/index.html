@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essence | Write Something from the Heart</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="theme-home">
+    <header class="site-header">
+        <a th:href="@{/}" class="brand">Essence Letters</a>
+        <nav class="site-nav">
+            <a th:href="@{/templates}">Templates</a>
+            <a th:href="@{/create}">Write</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-copy">
+                <h1>Write something <span>from the heart.</span></h1>
+                <p>Create beautiful love letters and share them with someone special. Digital stationery designed for modern romance.</p>
+                <div class="hero-actions">
+                    <a th:href="@{/create}" class="btn btn-primary">Write a Letter</a>
+                    <a th:href="@{/templates}" class="btn btn-outline">View Templates</a>
+                </div>
+            </div>
+            <div class="hero-card" aria-hidden="true"></div>
+        </section>
+
+        <section class="steps-section" id="about">
+            <h2>The Art of Connection</h2>
+            <p class="section-subtitle">Simple steps to create a digital memory that lasts a lifetime.</p>
+            <div class="steps-grid">
+                <article>
+                    <h3>Choose a template</h3>
+                    <p>Select from curated stationery designs with timeless character.</p>
+                </article>
+                <article>
+                    <h3>Write your message</h3>
+                    <p>Express your feelings with elegant typography and a clean writing space.</p>
+                </article>
+                <article>
+                    <h3>Share a private link</h3>
+                    <p>Send a secure link so your recipient can open your letter instantly.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="collections-section">
+            <div class="collections-head">
+                <div>
+                    <h2>Curated Collections</h2>
+                    <p>Choose the perfect aesthetic for your message</p>
+                </div>
+                <a th:href="@{/templates}">Browse all</a>
+            </div>
+            <div class="collections-grid">
+                <article class="collection-card card-a">
+                    <h3>Classic Romance</h3>
+                    <p>Timeless, floral, and deeply evocative.</p>
+                </article>
+                <article class="collection-card card-b">
+                    <h3>Modern Minimalist</h3>
+                    <p>Clean lines for clear expressions.</p>
+                </article>
+                <article class="collection-card card-c">
+                    <h3>Vintage Charm</h3>
+                    <p>The nostalgia of old-world letters.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Ready to share your heart?</h2>
+            <p>Your first letter is a single click away.</p>
+            <a th:href="@{/create}" class="btn btn-light">Get Started Today</a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a th:href="@{/}" class="brand small">Essence Letters</a>
+        <div>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+        </div>
+        <p>2026 Essence Letters. Designed with care.</p>
+    </footer>
+</body>
+</html>
